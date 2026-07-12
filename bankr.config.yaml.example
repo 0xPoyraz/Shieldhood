@@ -1,0 +1,24 @@
+# Shieldhood Configuration for Bankr.bot
+
+# Security Settings
+shield:
+  enabled: true
+  log_level: "INFO"
+  require_confirmation: true
+
+# Spending Policy
+spending:
+  daily_limit_usd: 5000
+  tx_limit_usd: 1000
+  reset_daily_at: "00:00"
+
+# Address Allowlist (kosongkan kalau tidak pakai)
+allowlist:
+  enabled: false
+  addresses:
+    - "0xYourTrustedAddressHere"
+
+# Robinhood Chain Specific
+chain:
+  id: "robinhood"
+  name: "Robinhood Chain"
