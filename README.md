@@ -47,3 +47,10 @@ AI Security Engineer
 <p align="center">
   <em>Securing the future of autonomous AI agents in DeFi.</em>
 </p>
+
+### Quick Start
+
+```bash
+git clone https://github.com/linelaramee/Shieldhood.git
+cd Shieldhood
+python3 guard.py --self-test
