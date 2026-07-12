@@ -28,3 +28,31 @@
 git clone https://github.com/linelaramee/Shieldhood.git
 cd Shieldhood
 python3 guard.py --self-test
+
+---
+
+### Bankr.bot Integration
+See [`SKILL.md`](SKILL.md) for detailed integration guide.
+
+---
+
+### Tech Stack
+
+- **Language**: Python 3.10+
+- **Core**: Pure standard library
+- **Platform**: Bankr.bot Skill System
+- **Chain**: Optimized for Robinhood Chain
+
+---
+
+### Author
+
+**Laramée Line**  
+AI Security Engineer  
+[@linelaramee](https://x.com/linelaramee) | [linelaramee@gmail.com](mailto:linelaramee@gmail.com)
+
+---
+
+<p align="center">
+  <em>Securing the future of autonomous AI agents in DeFi.</em>
+</p>
