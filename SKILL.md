@@ -1,59 +1,72 @@
-# Shieldhood Skill for Bankr.bot
+# Shieldhood - AI Security Skill for Bankr.bot
+
+**Advanced AI Security Layer for autonomous DeFi agents on Robinhood Chain.**
 
 ## Description
+Shieldhood acts as the **last line of defense** at the AI level. It protects autonomous DeFi agents from prompt injection, jailbreaks, obfuscated attacks, and malicious commands that could lead to unauthorized transfers or dangerous executions.
 
-Shieldhood is an AI Security Skill / Layer for **Bankr.bot**, specifically optimized for Robinhood Chain.  
-
-It acts as the **last line of defence** at the AI level, protecting autonomous DeFi agents from prompt injection, jailbreaks, and malicious commands that could result in unauthorized transfers or dangerous executions.
-
-## Key Features (v2.0)
-
-- Deep multi-layer detection with recursive payload decoding (Base64, Hex, ROT-N, High Entropy, Invisible Unicode, etc.)
-- Human confirmation gate for high-risk actions
-- Configurable spending policy (daily and per-transaction limits)
+## Key Features (v2.1)
+- Deep multi-layer detection with recursive payload decoding (Base64, Hex, ROT-N, entropy, invisible Unicode, etc.)
+- Human confirmation gate for high-risk actions (`/shieldhood confirm`)
+- Configurable spending policy (daily & per-transaction limits)
 - Address allowlist support
+- State persistence (daily spend tracking + pending actions)
 - YAML-based configuration
-- Lightweight and fast (pure Python)
+- Lightweight & fast (pure Python, minimal dependencies)
 
 ## Available Commands
-
-- `/shieldhood scan <text>` → Run full security scan on prompt/command
-- `/shieldhood status` → Show shield status, daily spending, and configuration
-- `/shieldhood confirm` → Approve and proceed with pending action
+- `/shieldhood scan <text>` → Run full security scan
+- `/shieldhood confirm` → Approve pending high-risk action
 - `/shieldhood cancel` → Cancel pending action
+- `/shieldhood status` → Show shield status and limits (coming soon in v2.2)
 - `/shieldhood help` → Display command list
 
 ## Integration with Bankr.bot
 
 ```python
-from guard import Shieldhood
+from shieldhood.guard import Shieldhood
 
-# Initialize the shield (usually done during skill loading)
+# Initialize the shield (usually during skill loading)
 shield = Shieldhood(config_path="bankr.config.yaml")
 
-# Inside Bankr.bot main command handler
+# Inside your main command handler
 def handle_user_command(command: str, context: dict = None):
     # Route Shieldhood commands
     if command.startswith("/shieldhood"):
         return shield.handle_command(command, context)
     
-    # Optional: Auto-scan every incoming command
+    # Optional: Auto-scan every incoming command/prompt
     scan_result = shield.scan(command)
     if scan_result["requires_confirmation"]:
-        # Block execution and request human confirmation
-        return "🛡️ Shieldhood detected potential risk. Use /shieldhood confirm or /shieldhood cancel."
+        # Block and request human confirmation
+        return "🛡️ Shieldhood detected potential risk. Use /shieldhood confirm to proceed."
     
     # Continue with normal Bankr.bot logic...
+```
 
-ConfigurationCopy the example configuration file:bash
-
+## Setup
+```bash
+# Copy example config
 cp bankr.config.yaml.example bankr.config.yaml
 
-Then adjust limits, enable allowlist, etc. according to your risk tolerance.RequirementsPython 3.10+
-PyYAML (pip install pyyaml)
-Bankr.bot skill environment
+# Edit according to your risk tolerance
+```
 
-Author: 0xPoyraz (@0xPoyraz
-)
+## Requirements
+- Python 3.10+
+- PyYAML (`pip install pyyaml`)
+- Bankr.bot skill environment
 
+## Links
+- **GitHub**: https://github.com/0xPoyraz/Shieldhood
+- **PyPI**: https://pypi.org/project/shieldhood/
+- **Website & Live Demo**: https://www.shieldhood.xyz/
+- **Official X**: [@shieldhood](https://x.com/shieldhood)
+- **Developer**: [@0xPoyraz](https://x.com/0xPoyraz)
 
+---
+
+**Shieldhood — Securing the future of autonomous DeFi agents.**
+```
+
+---
